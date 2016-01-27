@@ -187,7 +187,7 @@ Let's look at some examples:
 
 * +"java.lang.String"+ must be specified for a parameter of type [classname]+java.lang.String+
 * +"long"+ must be specified for a parameter of type [classname]+long+
-* +"\[Ljava.lang.Object;"+ must be specified for a parameter of type [classname]+java.lang.Object\[\]+
+* +"\[Ljava.lang.Object;"+ must be specified for a parameter of type [classname]+java.lang.Object[]+
 
 
 [tck-testable]#Varargs parameters are specified using the corresponding array type, e.g. a parameter +String...+ must be specified as +"\[Ljava.lang.String;"+.#
@@ -273,7 +273,7 @@ Let's look at some examples:
 
 * +"java.lang.String"+ must be specified for a parameter of type [classname]+java.lang.String+
 * +"long"+ must be specified for a parameter of type [classname]+long+
-* +"\[Ljava.lang.Object;"+ must be specified for a parameter of type [classname]+java.lang.Object\[\]+
+* +"\[Ljava.lang.Object;"+ must be specified for a parameter of type [classname]+java.lang.Object[]+
 
 
 [tck-testable]#Varargs parameters are specified using the corresponding array type, e.g. a parameter +String...+ must be specified as +"\[Ljava.lang.String;"+.#
