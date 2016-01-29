@@ -1127,15 +1127,16 @@ The return value constraints in [classname]+DefaultOrderService+ are legal, as t
 
 === Validation routine
 
-[tck-testable]#For a given group, the validation routine applied on a given bean instance is expected to execute the following constraint validations in no particular order: 
+[tck-testable]
+--
+For a given group, the validation routine applied on a given bean instance is expected to execute the following constraint validations in no particular order:
 
 * for all _reachable_ fields, execute all field level validations (including the ones expressed on superclasses) matching the targeted group unless the given validation constraint has already been processed during this validation routine for a given navigation path (see <<constraintdeclarationvalidationprocess-validationroutine-graphvalidation>>) as part of a previous group match.
 * for all _reachable_ getters, execute all getter level validations (including the ones expressed on interfaces and superclasses) matching the targeted group unless the given validation constraint has already been processed during this validation routine for a given navigation path (see <<constraintdeclarationvalidationprocess-validationroutine-graphvalidation>>) as part of a previous group match.
 * execute all class level validations (including the ones expressed on interfaces and superclasses) matching the targeted group unless the given validation constraint has already been processed during this validation routine for a given navigation path (see <<constraintdeclarationvalidationprocess-validationroutine-graphvalidation>>) as part of a previous group match.
 * for all _reachable_ and _cascadable_ associations, execute all cascading validations (see <<constraintdeclarationvalidationprocess-validationroutine-graphvalidation>>) including the ones expressed on interfaces and superclasses (see <<constraintdeclarationvalidationprocess-groupsequence-formaldefinition>>). Note that group conversion can apply (see <<constraintdeclarationvalidationprocess-groupsequence-groupconversion>>).
 
-
-#
+--
 
 Reachable fields, getters and associations as well as cascadable associations are defined in <<constraintdeclarationvalidationprocess-validationroutine-traversable>>.
 
