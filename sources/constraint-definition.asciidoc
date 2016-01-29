@@ -92,7 +92,9 @@ public @interface Constraint {
 
 A constraint is said to be generic if it has at least one constraint validator targeting the element annotated i.e. targeting the (returned) element annotated by the constraint (a bean, a field, a getter, a method/constructor return value or a method/constructor parameter). A constraint is said to be cross-parameter if it has one constraint validator targeting the array of parameters of a method or constructor (to validate the consistency of several method/constructor parameters). A Bean Validation constraint is most of the time either a generic constraint or a cross-parameter constraint. In rare situations, a constraint can be both.
 
-[tck-not-testable]#Generic constraint annotations can target any of the following [classname]++ElementType++ s: 
+[tck-not-testable]
+--
+Generic constraint annotations can target any of the following [classname]++ElementType++ s:
 
 * +FIELD+ for constrained attributes
 * +METHOD+ for constrained getters and constrained method return values
@@ -100,18 +102,16 @@ A constraint is said to be generic if it has at least one constraint validator t
 * [classname]+PARAMETER+ for constrained method and constructor parameters
 * +TYPE+ for constrained beans
 * +ANNOTATION_TYPE+ for constraints composing other constraints
+--
 
-
-#
-
-[tck-not-testable]#Cross-parameter constraint annotations can target any of the following [classname]++ElementType++ s: 
+[tck-not-testable]
+--
+Cross-parameter constraint annotations can target any of the following [classname]++ElementType++ s:
 
 * +METHOD+
 * +CONSTRUCTOR+
 * +ANNOTATION_TYPE+ for cross-parameter constraints composing other cross-parameter constraints
-
-
-#
+--
 
 [tck-not-testable]#A constraint annotation that is both can target the union of the generic and cross-parameter constraint annotations targets.#
 
@@ -938,13 +938,14 @@ public interface ConstraintValidator<A extends Annotation, T> {
 }
 ----
 
-[tck-not-testable]#Some restrictions apply on the generic type [classname]+T+ (used in the [methodname]+isValid()+ method). [classname]+T+ must 
+[tck-not-testable]
+--
+Some restrictions apply on the generic type [classname]+T+ (used in the [methodname]+isValid()+ method). [classname]+T+ must
 
 * resolve to a non parameterized type (i.e. because the type is not using generics or because the raw type is used instead of the generic version)
 * or generic parameters of [classname]+T+ must be unbounded wildcard types (i.e. +<?>+).
 
-
-#
+--
 
 [NOTE]
 ====
