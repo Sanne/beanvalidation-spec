@@ -1,13 +1,13 @@
 import static org.asciidoctor.Asciidoctor.Factory.create;
 
-import java.io.File;
 import java.io.IOException;
 import java.io.InputStream;
-import java.net.URL;
+import java.util.Collections;
 
 import org.asciidoctor.Asciidoctor;
 import org.asciidoctor.Options;
 import org.asciidoctor.extension.JavaExtensionRegistry;
+import org.beanvalidation.asciidocextensions.TestableRoleExtractor;
 
 public class AsciidocExtensionTest {
 
@@ -15,10 +15,11 @@ public class AsciidocExtensionTest {
 		Asciidoctor asciidoctor = create();
 		JavaExtensionRegistry extensionRegistry = asciidoctor.javaExtensionRegistry();
 
-		extensionRegistry.treeprocessor( "org.beanvalidation.asciidocextensions.TestableRoleExtractor" );
-		String testInput = readTestingInput();
-		String content = asciidoctor.convert( testInput, new Options() );
-		System.out.println( content );
+		TestableRoleExtractor testedProcessor = new TestableRoleExtractor( Collections.emptyMap() );
+
+		extensionRegistry.treeprocessor( testedProcessor );
+		String content = asciidoctor.convert( readTestingInput(), new Options() );
+//		System.out.println( content );
 	}
 
 	private static String readTestingInput() throws IOException {
