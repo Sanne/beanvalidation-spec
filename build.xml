@@ -17,6 +17,9 @@
 	<target name="clean-pdfoutput">
 		<delete dir="target/pdf" />
 	</target>
+	<target name="clean-docbookoutput">
+		<delete dir="target/docbook" />
+	</target>
 	<target name="java-build-dir-clean">
 		<delete dir="target/asciidocextensions" />
 	</target>
@@ -29,6 +32,9 @@
 	</target>
 	<target name="pdf-output-dir-exists">
 		<mkdir dir="target/pdf" />
+	</target>
+	<target name="docbook-output-dir-exists">
+		<mkdir dir="target/docbook" />
 	</target>
 	<target name="html-output-dir-exists">
 		<mkdir dir="target/html" />
@@ -60,11 +66,15 @@
 		<renderer outputdirectory="target/html" backend="html" />
 	</target>
 
+	<target name="render-docbook" depends="clean-docbookoutput, have-asciidoctor, docbook-output-dir-exists, compile-asciidoc-extensions">
+		<renderer outputdirectory="target/docbook" backend="docbook" />
+	</target>
+
 	<target name="render-pdf" depends="clean-pdfoutput, have-asciidoctor, pdf-output-dir-exists, compile-asciidoc-extensions">
 		<renderer outputdirectory="target/pdf" backend="pdf" />
 	</target>
 
-	<target name="build" depends="render-html,render-pdf" description="Builds the specification documents" />
+	<target name="build" depends="render-html,render-pdf,render-docbook" description="Builds the specification documents in all formats" />
 
 	<target name="preview" depends="render-html" description="Build and opens the HTML version of the specification in your browser">
 		<property name="outputDirectory" location="target"/>
