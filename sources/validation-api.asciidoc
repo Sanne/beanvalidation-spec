@@ -1836,7 +1836,7 @@ The default message interpolator uses the following steps:
 . [tck-not-testable]#If step 2 triggers a replacement, then step 1 is applied again.# Otherwise step 4 is performed.
 
 
-. [tck-testable]#Message parameters are extracted from the message string. Those matching the name of an attribute of the constraint are replaced by the value of that attribute in the constraint declaration. Parameter interpolation has precedence over message expressions. For example for the message descriptor ${value}, trying to evaluate {value} as message parameter has precedence over evaluating ${value} as message expression.#
+. [tck-testable]#Message parameters are extracted from the message string. Those matching the name of an attribute of the constraint are replaced by the value of that attribute in the constraint declaration. Parameter interpolation has precedence over message expressions. For example for the message descriptor `${value}`, trying to evaluate `{value}` as message parameter has precedence over evaluating `${value}` as message expression.#
 
 
 . [tck-testable]#Message expressions are extracted from the message string and evaluated using Expression Language. See also <<message-expressions>>.#
@@ -1868,12 +1868,11 @@ The locale to be used for message interpolation is defined as following:
 
 ===== Message expressions using Expression Language (EL)
 
-[tck-testable]#The default message interpolation allows the use of Expression Language (EL) as defined in JSR 341.# [tck-testable]#Expressions to be evaluated by EL need to be enclosed in ${}within the message descriptor# . The following properties and beans have to be made available in the EL context:
+[tck-testable]#The default message interpolation allows the use of Expression Language (EL) as defined in JSR 341.# [tck-testable]#Expressions to be evaluated by EL need to be enclosed in `${}` within the message descriptor# . The following properties and beans have to be made available in the EL context:
 
 * [tck-testable]#the attribute values of the constraint declaration mapped to their attribute name#
-* [tck-testable]#the validated value mapped under the name validatedValue.#
-* [tck-testable]#a bean mapped to the name formatterexposing the vararg method [methodname]`format(String format, Object\... args)`. This method must behave like [methodname]`java.util.Formatter.format(String format, Object\... args)`. The locale used for formatting is defined by <<message-interpolation-default-locale>>. The formatterbean allows to format property values, for example in the case of the validated value being 98.12345678, ${formatter.format('%1$.2f',
-            validatedValue)}would format it to 98.12 (two digits after the decimal point, where the use of '.' vs ',' would be locale specific).#
+* [tck-testable]#the validated value mapped under the name `validatedValue`.#
+* [tck-testable]#a bean mapped to the name `formatter` exposing the vararg method [methodname]`format(String format, Object\... args)`. This method must behave like [methodname]`java.util.Formatter.format(String format, Object\... args)`. The locale used for formatting is defined by <<message-interpolation-default-locale>>. The `formatter` bean allows to format property values, for example in the case of the validated value being 98.12345678, `${formatter.format('%1$.2f', validatedValue)}` would format it to 98.12 (two digits after the decimal point, where the use of '.' vs ',' would be locale specific).#
 
 
 [tck-testable]#If an exception occurs during message interpolation, e.g. due invalid expressions or references to an unknown property, the message expression stays unchanged.#
@@ -2642,7 +2641,7 @@ public interface ValidatorContext {
 
 ====
 
-[tck-testable]#The `MessageInterpolator`, the `TraversableResolver`, the `ConstraintValidatorFactory` or the `ParameterNameProvider` passed to the `ValidatorContext` are used instead of the `ValidatorFactory` 's `MessageInterpolator`, `TraversableResolver`, `ConstraintValidatorFactory` or `ParameterNameProvider` instances.#
+[tck-testable]#The `MessageInterpolator`, the `TraversableResolver`, the `ConstraintValidatorFactory` or the `ParameterNameProvider` passed to the `ValidatorContext` are used instead of the ``ValidatorFactory``'s `MessageInterpolator`, `TraversableResolver`, `ConstraintValidatorFactory` or `ParameterNameProvider` instances.#
 
 .Use of ValidatorFactory
 ====
@@ -2680,7 +2679,7 @@ The responsibility of the [classname]`Configuration` is to collect configuration
 
 [tck-testable]#[classname]`Configuration` does provide a [classname]`ConstraintValidatorFactory` implementation following the default Bean Validation [classname]`ConstraintValidatorFactory` rules as defined in <<constraintsdefinitionimplementation-constraintfactory>>. You can access it by calling [methodname]`getDefaultConstraintValidatorFactory()`.# Such an implementation is useful to let a custom [classname]`ConstraintValidatorFactory` delegate to the standard [classname]`ConstraintValidatorFactory`.
 
-[tck-testable]#[classname]`Configuration` does provide a [classname]`ParameterNameProvider` implementation following the default Bean Validation [classname]`ParameterNameProvider` rules as defined in <<constraintdeclarationvalidationprocess-methodlevelconstraints-definingparameterconstraints-namingparameters>>. You can access it by calling [methodname]`getDefaultParameterNameProvider()`#. Such an implementation is useful to let a custom [classname]`ParameterNameProvider` delegate to the standard [classname]`ParameterNameProvider`.
+[tck-testable]#[classname]`Configuration` does provide a [classname]`ParameterNameProvider` implementation following the default Bean Validation [classname]`ParameterNameProvider` rules as defined in <<constraintdeclarationvalidationprocess-methodlevelconstraints-definingparameterconstraints-namingparameters>>. You can access it by calling [methodname]`getDefaultParameterNameProvider()`.# Such an implementation is useful to let a custom [classname]`ParameterNameProvider` delegate to the standard [classname]`ParameterNameProvider`.
 
 [tck-testable]#Via [classname]`getBootstrapConfiguration()`, [classname]`Configuration` also exposes data stored in [classname]`META-INF/validation.xml`# (see <<xml-config>>). This is particularly useful for containers wishing to control the instance creation and life cycle (more information at <<bootstrapping-usageandcontainerexpectation>>).
 
